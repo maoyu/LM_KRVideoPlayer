@@ -88,6 +88,16 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     [[UIApplication sharedApplication] setStatusBarHidden:NO withAnimation:UIStatusBarAnimationFade];
 }
 
+- (void)hiddenControlView {
+    [self.videoControl removeFromSuperview];
+}
+
+- (void)cancelListeningRotating {
+    [[UIDevice currentDevice] endGeneratingDeviceOrientationNotifications];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIDeviceOrientationDidChangeNotification object:nil];
+}
+
 #pragma mark - Private Method
 
 - (void)configObserver

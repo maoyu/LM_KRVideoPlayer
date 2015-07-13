@@ -19,6 +19,8 @@
 @property (nonatomic, assign) CGRect frame;
 
 - (instancetype)initWithFrame:(CGRect)frame;
+- (void)hiddenControlView;
+- (void)cancelListeningRotating;
 - (void)showInWindow;
 - (void)dismiss;
 /**
