@@ -16,6 +16,9 @@
 @property (nonatomic, copy)void(^willBackOrientationPortrait)(void);
 /** 进入全屏状态 */
 @property (nonatomic, copy)void(^willChangeToFullscreenMode)(void);
+
+@property (nonatomic, copy)void(^playerReadyForDisplay)(void);
+
 @property (nonatomic, assign) CGRect frame;
 
 - (instancetype)initWithFrame:(CGRect)frame;

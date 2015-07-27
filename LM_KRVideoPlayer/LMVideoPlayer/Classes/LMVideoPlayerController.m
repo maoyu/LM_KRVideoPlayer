@@ -104,7 +104,7 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
 {
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMPMoviePlayerPlaybackStateDidChangeNotification) name:MPMoviePlayerPlaybackStateDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMPMoviePlayerLoadStateDidChangeNotification) name:MPMoviePlayerLoadStateDidChangeNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMPMoviePlayerReadyForDisplayDidChangeNotification) name:MPMoviePlayerReadyForDisplayDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMPMoviePlayerReadyForDisplayDidChangeNotification:) name:MPMoviePlayerReadyForDisplayDidChangeNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onMPMovieDurationAvailableNotification) name:MPMovieDurationAvailableNotification object:nil];
 }
 
@@ -153,9 +153,11 @@ static const CGFloat kVideoPlayerControllerAnimationTimeinterval = 0.3f;
     }
 }
 
-- (void)onMPMoviePlayerReadyForDisplayDidChangeNotification
+- (void)onMPMoviePlayerReadyForDisplayDidChangeNotification:(NSNotification *)notify
 {
-    
+    if (self.playerReadyForDisplay) {
+        self.playerReadyForDisplay();
+    }
 }
 
 - (void)onMPMovieDurationAvailableNotification
